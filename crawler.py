@@ -15,7 +15,7 @@ req.encoding= None
 html = req.content
 soup = BeautifulSoup(html, 'html.parser')
 datas = soup.select(
-    'div.contents > div.content01 > div > ul > li >article > div >h3'
+    'div.content01 > div > ul > li:nth-child(1) > article' 
     )
 
 data = {}
