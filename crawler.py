@@ -6,7 +6,7 @@ import json
 import os
 import sys
 
-BASE_DIR = os.path.dirname('.')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 print('뉴스기사 스크래핑 시작')
 
