@@ -6,7 +6,7 @@ import json
 import os
 import sys
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname('.')
 
 print('뉴스기사 스크래핑 시작')
 
@@ -15,17 +15,17 @@ req.encoding= None
 html = req.content
 soup = BeautifulSoup(html, 'html.parser')
 datas = soup.select(
-    'div.content01 > div > ul > li:nth-child(1) > article' 
+    'div.contents > div.content01 > div > ul > li > article > div > h3'
     )
 
 data = {}
-
 for title in datas:   
     name = title.find_all('a')[0].text
     url = 'http:'+title.find('a')['href']
     data[name] = url
 
 with open(os.path.join(BASE_DIR, 'news.json'), 'w+',encoding='utf-8') as json_file:
+    print(data)
     json.dump(data, json_file, ensure_ascii = False, indent='\t')
 
 print('뉴스기사 스크래핑 끝')
